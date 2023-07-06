@@ -112,4 +112,15 @@ dependencies {
 
     //swipe to delete
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.4'
+
+    //jsoup
+    implementation 'org.jsoup:jsoup:1.14.2'
+
+    //selenium auto
+    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+
+    //web driver
+    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.camera.core.*
@@ -20,6 +21,12 @@ import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentScannerBinding
+import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -27,6 +34,11 @@ class ScannerFragment : Fragment() {
     private lateinit var binding: FragmentScannerBinding
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var barcodeScanner: BarcodeScanner
+
+    private lateinit var result: String
+
+    private lateinit var webDriver: WebDriver
+    private lateinit var webDriverWait: WebDriverWait
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +52,34 @@ class ScannerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupCamera()
+        startWebScraping()
         navigateBack()
+    }
+
+    private fun startWebScraping() {
+        val barcodeValue = result
+        webDriver.get("https://www.upczilla.com/")
+
+        val searchInput = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("upcsearch")))
+        searchInput.sendKeys(barcodeValue)
+
+        val searchButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.className("btn upc-search")))
+        searchButton.click()
+
+        val productNameElement = webDriver.findElement(By.className("producttitle"))
+
+        val productName = productNameElement.text.trim()
+
+        Toast.makeText(requireContext(), productName, Toast.LENGTH_SHORT).show()
+
+        webDriver.quit()
+    }
+
+    private fun setupWebScraping() {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver")
+        val options = ChromeOptions()
+        webDriver = ChromeDriver(options)
+        webDriverWait = WebDriverWait(webDriver, 10)
     }
 
     private fun setupViews() {
@@ -66,6 +105,8 @@ class ScannerFragment : Fragment() {
             val cameraProvider = cameraProviderFuture.get()
             bindCameraPreview(cameraProvider)
             bindImageAnalyzer(cameraProvider)
+
+            setupWebScraping()
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
@@ -116,7 +157,7 @@ class ScannerFragment : Fragment() {
                     onScan?.invoke(barcodes)
                     onScan = null
 
-                    val result = barcodes.first().displayValue
+                    result = barcodes.first().displayValue.toString()
                     setFragmentResult("requestKey", bundleOf("data" to result))
                     findNavController().navigate(R.id.action_scannerFragment_to_addIngredientFragment)
                 }
