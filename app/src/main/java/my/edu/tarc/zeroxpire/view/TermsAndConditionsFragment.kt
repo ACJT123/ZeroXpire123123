@@ -1,26 +1,28 @@
-package my.edu.tarc.zeroxpire.profile
+package my.edu.tarc.zeroxpire.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.NumberPicker
-import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import my.edu.tarc.zeroxpire.R
-import my.edu.tarc.zeroxpire.databinding.FragmentNotificationsBinding
+import my.edu.tarc.zeroxpire.databinding.FragmentTermsAndConditionsBinding
 
-class NotificationsFragment : Fragment() {
-    private lateinit var binding: FragmentNotificationsBinding
 
+
+class TermsAndConditionsFragment : Fragment() {
+    private lateinit var binding: FragmentTermsAndConditionsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        binding = FragmentTermsAndConditionsBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -28,7 +30,7 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.upBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_notificationsFragment_to_profileFragment)
+            navigation()
             val view = requireActivity().findViewById<BottomAppBar>(R.id.bottomAppBar)
             view.visibility = View.VISIBLE
 
@@ -36,16 +38,19 @@ class NotificationsFragment : Fragment() {
             add.visibility = View.VISIBLE
         }
 
-        val numberPicker: NumberPicker = binding.numPicker
-        val textView: TextView = binding.daysReminder
-        numberPicker.minValue = 1
-        numberPicker.maxValue = 30
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle the back button press here
+                // You can perform any necessary actions or navigation
 
-        numberPicker.setOnValueChangedListener { _, _, new ->
-            textView.text = "Remind you when things are expired within $new days"
+                // For example, navigate to a different fragment
+                navigation()
+            }
         }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
+    }
 
-        // Set initial text based on the initial value of the NumberPicker
-        textView.text = "Remind you when things are expired within ${numberPicker.value} days"
+    private fun navigation(){
+        findNavController().popBackStack()
     }
 }

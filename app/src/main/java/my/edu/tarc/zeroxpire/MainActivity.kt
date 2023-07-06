@@ -4,21 +4,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.impl.Observable
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import my.edu.tarc.zeroxpire.databinding.ActivityMainBinding
-import my.edu.tarc.zeroxpire.ingredient.ScannerFragment
+import my.edu.tarc.zeroxpire.view.ScannerFragment
 import my.edu.tarc.zeroxpire.viewmodel.IngredientViewModel
 
 class MainActivity : AppCompatActivity(){

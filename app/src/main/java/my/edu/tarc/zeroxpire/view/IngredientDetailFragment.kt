@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.ingredient
+package my.edu.tarc.zeroxpire.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -9,14 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentIngredientDetailBinding
-import my.edu.tarc.zeroxpire.model.Ingredient
 import my.edu.tarc.zeroxpire.viewmodel.IngredientViewModel
 import java.util.*
 

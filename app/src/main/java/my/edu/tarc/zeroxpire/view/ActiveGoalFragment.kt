@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.goal
+package my.edu.tarc.zeroxpire.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import my.edu.tarc.zeroxpire.R
 
-class UncompletedGoalFragment : Fragment() {
+class ActiveGoalFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_uncompleted_goal, container, false)
+        return inflater.inflate(R.layout.fragment_active_goal, container, false)
     }
-
 }

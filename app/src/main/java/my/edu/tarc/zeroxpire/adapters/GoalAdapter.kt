@@ -1,9 +1,12 @@
-package my.edu.tarc.zeroxpire.goal
+package my.edu.tarc.zeroxpire.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import my.edu.tarc.zeroxpire.view.ActiveGoalFragment
+import my.edu.tarc.zeroxpire.view.CompletedGoalFragment
+import my.edu.tarc.zeroxpire.view.UncompletedGoalFragment
 
 
 class GoalAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {

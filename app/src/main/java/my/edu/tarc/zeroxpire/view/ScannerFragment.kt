@@ -1,6 +1,5 @@
-package my.edu.tarc.zeroxpire.ingredient
+package my.edu.tarc.zeroxpire.view
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,7 +45,7 @@ class ScannerFragment : Fragment() {
 
     private fun setupViews() {
         binding.addManualBtn.setOnClickListener {
-            findNavController().navigate(R.id.addIngredientFragment)
+            findNavController().navigate(R.id.action_scannerFragment_to_addIngredientFragment)
         }
 
         binding.upBtn.setOnClickListener {

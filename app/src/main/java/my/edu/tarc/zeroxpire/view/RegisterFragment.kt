@@ -1,7 +1,6 @@
-package my.edu.tarc.zeroxpire.profile
+package my.edu.tarc.zeroxpire.view
 
 import android.os.Bundle
-import android.os.FileUtils.ProgressListener
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +10,7 @@ import androidx.activity.addCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.textfield.TextInputLayout.EndIconMode
 import com.google.firebase.auth.FirebaseAuth
-import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {

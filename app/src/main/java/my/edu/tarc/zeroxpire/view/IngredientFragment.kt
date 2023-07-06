@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.ingredient
+package my.edu.tarc.zeroxpire.view
 
 import android.app.AlertDialog
 import android.graphics.Canvas
@@ -24,12 +24,14 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import my.edu.tarc.zeroxpire.R
+import my.edu.tarc.zeroxpire.adapters.IngredientAdapter
 import my.edu.tarc.zeroxpire.databinding.FragmentIngredientBinding
+import my.edu.tarc.zeroxpire.ingredient.IngredientClickListener
 import my.edu.tarc.zeroxpire.model.Ingredient
 import my.edu.tarc.zeroxpire.viewmodel.IngredientViewModel
 
 
-class IngredientFragment : Fragment(), IngredientClickListener{
+class IngredientFragment : Fragment(), IngredientClickListener {
     private lateinit var binding: FragmentIngredientBinding
 
     val ingredientViewModel: IngredientViewModel by activityViewModels()

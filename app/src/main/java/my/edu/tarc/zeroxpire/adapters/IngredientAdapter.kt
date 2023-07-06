@@ -1,21 +1,14 @@
-package my.edu.tarc.zeroxpire.ingredient
+package my.edu.tarc.zeroxpire.adapters
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import my.edu.tarc.zeroxpire.R
-import my.edu.tarc.zeroxpire.databinding.CardViewDesignBinding
+import my.edu.tarc.zeroxpire.ingredient.IngredientClickListener
 import my.edu.tarc.zeroxpire.model.Ingredient
-import org.w3c.dom.Text
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
-import kotlin.math.abs
 
 class IngredientAdapter(private val clickListener: IngredientClickListener): RecyclerView.Adapter<IngredientAdapter.ViewHolder>(){
     private var ingredientList = emptyList<Ingredient>()

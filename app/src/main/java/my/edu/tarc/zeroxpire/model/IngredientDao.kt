@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.ingredient
+package my.edu.tarc.zeroxpire.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

@@ -1,8 +1,6 @@
-package my.edu.tarc.zeroxpire.profile
+package my.edu.tarc.zeroxpire.view
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,8 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentProfileBinding
-import my.edu.tarc.zeroxpire.ingredient.IngredientDatabase
-import kotlin.math.log
+import my.edu.tarc.zeroxpire.model.IngredientDatabase
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding

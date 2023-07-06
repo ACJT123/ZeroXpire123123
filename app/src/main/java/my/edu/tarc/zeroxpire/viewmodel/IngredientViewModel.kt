@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import my.edu.tarc.zeroxpire.IngredientRepository
-import my.edu.tarc.zeroxpire.ingredient.IngredientDatabase
+import my.edu.tarc.zeroxpire.model.IngredientRepository
+import my.edu.tarc.zeroxpire.model.IngredientDatabase
 import my.edu.tarc.zeroxpire.model.Ingredient
 
 class IngredientViewModel(application: Application): AndroidViewModel(application) {

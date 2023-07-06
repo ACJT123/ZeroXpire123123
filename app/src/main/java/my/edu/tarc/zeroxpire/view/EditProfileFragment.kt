@@ -1,10 +1,8 @@
-package my.edu.tarc.zeroxpire.profile
+package my.edu.tarc.zeroxpire.view
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

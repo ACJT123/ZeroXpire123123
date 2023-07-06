@@ -1,8 +1,8 @@
-package my.edu.tarc.zeroxpire
+package my.edu.tarc.zeroxpire.model
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import my.edu.tarc.zeroxpire.ingredient.IngredientDao
+import my.edu.tarc.zeroxpire.model.IngredientDao
 import my.edu.tarc.zeroxpire.model.Ingredient
 
 class IngredientRepository(private val ingredientDao: IngredientDao){
