@@ -19,14 +19,16 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import kotlinx.coroutines.*
 import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentScannerBinding
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.WebDriverWait
+import org.jsoup.Jsoup
+//import org.openqa.selenium.By
+//import org.openqa.selenium.WebDriver
+//import org.openqa.selenium.chrome.ChromeDriver
+//import org.openqa.selenium.chrome.ChromeOptions
+//import org.openqa.selenium.support.ui.ExpectedConditions
+//import org.openqa.selenium.support.ui.WebDriverWait
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -37,8 +39,8 @@ class ScannerFragment : Fragment() {
 
     private lateinit var result: String
 
-    private lateinit var webDriver: WebDriver
-    private lateinit var webDriverWait: WebDriverWait
+//    private lateinit var webDriver: WebDriver
+//    private lateinit var webDriverWait: WebDriverWait
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,35 +54,35 @@ class ScannerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupCamera()
-        startWebScraping()
+//        startWebScraping()
         navigateBack()
     }
 
-    private fun startWebScraping() {
-        val barcodeValue = result
-        webDriver.get("https://www.upczilla.com/")
+//    private fun startWebScraping() {
+//        val barcodeValue = result
+//        webDriver.get("https://www.upczilla.com/")
+//
+//        val searchInput = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("upcsearch")))
+//        searchInput.sendKeys(barcodeValue)
+//
+//        val searchButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.className("btn upc-search")))
+//        searchButton.click()
+//
+//        val productNameElement = webDriver.findElement(By.className("producttitle"))
+//
+//        val productName = productNameElement.text.trim()
+//
+//        Toast.makeText(requireContext(), productName, Toast.LENGTH_SHORT).show()
+//
+//        webDriver.quit()
+//    }
 
-        val searchInput = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("upcsearch")))
-        searchInput.sendKeys(barcodeValue)
-
-        val searchButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.className("btn upc-search")))
-        searchButton.click()
-
-        val productNameElement = webDriver.findElement(By.className("producttitle"))
-
-        val productName = productNameElement.text.trim()
-
-        Toast.makeText(requireContext(), productName, Toast.LENGTH_SHORT).show()
-
-        webDriver.quit()
-    }
-
-    private fun setupWebScraping() {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver")
-        val options = ChromeOptions()
-        webDriver = ChromeDriver(options)
-        webDriverWait = WebDriverWait(webDriver, 10)
-    }
+//    private fun setupWebScraping() {
+//        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver")
+//        val options = ChromeOptions()
+//        webDriver = ChromeDriver(options)
+//        webDriverWait = WebDriverWait(webDriver, 10)
+//    }
 
     private fun setupViews() {
         binding.addManualBtn.setOnClickListener {
@@ -106,7 +108,7 @@ class ScannerFragment : Fragment() {
             bindCameraPreview(cameraProvider)
             bindImageAnalyzer(cameraProvider)
 
-            setupWebScraping()
+//            setupWebScraping()
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
@@ -160,6 +162,7 @@ class ScannerFragment : Fragment() {
                     result = barcodes.first().displayValue.toString()
                     setFragmentResult("requestKey", bundleOf("data" to result))
                     findNavController().navigate(R.id.action_scannerFragment_to_addIngredientFragment)
+                    scrape(result)
                 }
             }
             .addOnFailureListener { error ->
@@ -168,6 +171,25 @@ class ScannerFragment : Fragment() {
             .addOnCompleteListener {
                 imageProxy.close()
             }
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun scrape(barcode: String) {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val url = "https://www.upczilla.com/item/$barcode/"
+                val doc = Jsoup.connect(url).get()
+                val productTitle = doc.select("/html/body/div[3]/main/article/div/div[2]/div/div/div[1]/div/h1").text()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), productTitle, Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Error occurred while scraping", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun navigateBack() {

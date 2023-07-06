@@ -115,12 +115,12 @@ dependencies {
 
     //jsoup
     implementation 'org.jsoup:jsoup:1.14.2'
-
-    //selenium auto
-    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
-
-    //web driver
-    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+//
+//    //selenium auto
+//    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+//
+//    //web driver
+//    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
 
 
 }
