@@ -1,8 +1,11 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
+    id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -54,6 +57,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
 
 
     testImplementation 'junit:junit:4.13.2'
@@ -122,5 +127,8 @@ dependencies {
 //    //web driver
 //    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
 
+
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
 
 }

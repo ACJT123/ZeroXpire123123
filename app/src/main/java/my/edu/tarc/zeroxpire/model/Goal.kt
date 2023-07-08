@@ -5,11 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(foreignKeys = [ForeignKey(
-    entity = Ingredient::class,
-    childColumns = ["ingredientId"],
-    parentColumns =  ["id"]
-)])
+@Entity
 data class Goal(
     @PrimaryKey(autoGenerate = true)
     val goalId: Int,
@@ -22,7 +18,5 @@ data class Goal(
     @ColumnInfo(name = "completedDate")
     val completedDate: String?,
     @ColumnInfo(name = "uncompletedDate")
-    val uncompletedDate: String?,
-    @ColumnInfo(name = "ingredientId")
-    val ingredientId: Int
+    val uncompletedDate: String?
 )

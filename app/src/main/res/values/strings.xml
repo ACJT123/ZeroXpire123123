@@ -83,4 +83,25 @@ Last updated: [Date]\n
     <string name="no_ingredient_has_recorded">No ingredient has recorded!</string>
     <string name="ingredient_not_found">Ingredient Not Found!</string>
 
+    <string name="bookmark">bookmark</string>
+    <string name="share">share</string>
+    <string name="recipe_title">title</string>
+    <string name="recipe_image">recipe image</string>
+    <string name="recipe_ingredients_list">recipe ingredients list</string>
+    <string name="mealType">Meal Type</string>
+    <string name="filter_by">Filter By:</string>
+    <string name="cuisine">Cuisine</string>
+    <string name="exclude">Exclude</string>
+    <string name="include">Include</string>
+    <string name="sort_by">Sort By:</string>
+    <string name="rating">Rating</string>
+    <string name="number_of_ingredients">Number of Ingredients</string>
+    <string name="difficulty_level">Difficulty Level</string>
+    <string name="view_bookmarks">view bookmarks</string>
+    <string name="search_recipes">Search Recipes</string>
+    <string name="back">back</string>
+    <string name="recipe_description">Recipe description</string>
+    <string name="recipeDetailsErrorOccurred">error occured</string>
+    <string name="recipeDetailsNoInstructionsFound">no instructions found</string>
+
 </resources>

@@ -1,15 +1,23 @@
 package my.edu.tarc.zeroxpire.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity
+
+@Entity(
+    foreignKeys = [
+        ForeignKey(
+            entity = Goal::class,
+            childColumns = ["ingredientGoalId"],
+            parentColumns = ["goalId"]
+        )
+    ]
+)
 data class Ingredient(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    @ColumnInfo(name = "ingredientName")
+    val ingredientId: Int,
     val ingredientName: String,
-    @ColumnInfo(name = "expiryDate")
-    val expiryDate: String
+    val expiryDate: String,
+    val ingredientGoalId: Int?
 )

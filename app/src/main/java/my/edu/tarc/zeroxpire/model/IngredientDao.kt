@@ -29,4 +29,7 @@ interface IngredientDao {
 
 //    @Query("SELECT * FROM Ingredient ORDER BY ingredientName ASC")
 //    suspend fun sortByName(ingredient: Ingredient)
+
+    @Query("SELECT * FROM Ingredient WHERE expiryDate >= :startDate AND expiryDate <= :endDate")
+    fun getIngredientsWithinPeriod(startDate: String, endDate: String): LiveData<List<Ingredient>>
 }

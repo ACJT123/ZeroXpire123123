@@ -31,6 +31,12 @@ class IngredientRepository(private val ingredientDao: IngredientDao){
         ingredientDao.updateIngredient(ingredient)
     }
 
+    @WorkerThread
+    fun getIngredientsWithinPeriod(startDate: String, endDate: String): LiveData<List<Ingredient>> {
+        return ingredientDao.getIngredientsWithinPeriod(startDate, endDate)
+    }
+
+
 //    @WorkerThread
 //    suspend fun updateName(id: Int, newName: String) {
 //        ingredientDao.updateName(id, newName)

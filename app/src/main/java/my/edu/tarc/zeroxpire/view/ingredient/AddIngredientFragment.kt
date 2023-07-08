@@ -121,7 +121,7 @@ class AddIngredientFragment : Fragment() {
             binding.apply {
                 name = binding.enterIngredientName.text.toString()
                 date = selectedDate.toString()
-                val newIngredient = Ingredient(id, ingredientName, expiryDate)
+                val newIngredient = Ingredient(id, ingredientName, expiryDate, null)
                 ingredientViewModel.addIngredient(newIngredient)
             }
             Toast.makeText(requireContext(), "Ingredient is added successfully!", Toast.LENGTH_SHORT).show()

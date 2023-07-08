@@ -54,4 +54,8 @@ class IngredientViewModel(application: Application) : AndroidViewModel(applicati
 //        sortedIngredientList.value = filteredList
 //    }
 
+    fun getIngredientsWithinPeriod(startDate: String, endDate: String): LiveData<List<Ingredient>> {
+        return repository.getIngredientsWithinPeriod(startDate, endDate)
+    }
+
 }
