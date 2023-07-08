@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.goal
 
 import android.os.Bundle
 import android.view.LayoutInflater

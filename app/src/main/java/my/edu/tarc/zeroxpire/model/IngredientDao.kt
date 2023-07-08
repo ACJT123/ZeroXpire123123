@@ -21,9 +21,12 @@ interface IngredientDao {
     @Query("DELETE FROM Ingredient")
     suspend fun deleteAllIngredient()
 
-    @Query("UPDATE Ingredient set ingredientName = :name where ingredientId = :id")
-    suspend fun updateName(id: Int?, name: String?)
+//    @Query("UPDATE Ingredient set ingredientName = :name where ingredientId = :id")
+//    suspend fun updateName(id: Int?, name: String?)
+//
+//    @Query("SELECT * FROM Ingredient WHERE ingredientId = :id")
+//    suspend fun getIngredientById(id: Int): Ingredient?
 
-    @Query("SELECT * FROM Ingredient WHERE ingredientId = :id")
-    suspend fun getIngredientById(id: Int): Ingredient?
+//    @Query("SELECT * FROM Ingredient ORDER BY ingredientName ASC")
+//    suspend fun sortByName(ingredient: Ingredient)
 }

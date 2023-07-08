@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.ingredient
 
 import android.app.AlertDialog
 import android.graphics.Canvas
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
@@ -56,6 +57,8 @@ class IngredientFragment : Fragment(), IngredientClickListener {
 
         ingredientViewModel.ingredientList.observe(viewLifecycleOwner, Observer {
             if (it.isEmpty()) {
+                binding.ingredientSearchView.isIconified = true
+                binding.ingredientSearchView.setOnQueryTextListener(null)
                 binding.noIngredientHasRecorded.visibility = View.VISIBLE
             } else {
                 binding.noIngredientHasRecorded.visibility = View.INVISIBLE
@@ -65,10 +68,36 @@ class IngredientFragment : Fragment(), IngredientClickListener {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerview.adapter = adapter
 
+        binding.ingredientSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                val filteredIngredients = ingredientViewModel.ingredientList.value?.filter { ingredient ->
+                    ingredient.ingredientName.contains(newText, ignoreCase = true)
+                }
+
+                if (filteredIngredients.isNullOrEmpty()) {
+                    binding.notFoundText.visibility = View.VISIBLE
+                } else {
+                    binding.notFoundText.visibility = View.INVISIBLE
+                }
+
+                adapter.setIngredient(filteredIngredients ?: emptyList())
+
+                return true
+            }
+        })
+
+
+
+
         delete(adapter)
         greeting()
         navigateBack()
     }
+
 
 
     private fun navigateBack() {
@@ -162,10 +191,10 @@ class IngredientFragment : Fragment(), IngredientClickListener {
         findNavController().navigate(R.id.action_ingredientFragment_to_ingredientDetailFragment)
         val name = ingredient.ingredientName
         val date = ingredient.expiryDate
-        val id = ingredient.ingredientId
+//        val id = ingredient.ingredientId
         setFragmentResult("requestName", bundleOf("name" to name))
         setFragmentResult("requestDate", bundleOf("date" to date))
-        setFragmentResult("requestId", bundleOf("id" to id))
+//        setFragmentResult("requestId", bundleOf("id" to id))
         disableBtmNav()
     }
 

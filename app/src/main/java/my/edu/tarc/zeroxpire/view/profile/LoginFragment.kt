@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.profile
 
 import android.app.Activity
 import android.app.ProgressDialog

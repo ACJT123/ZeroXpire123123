@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.IngredientFragment">
+    tools:context=".view.ingredient.IngredientFragment">
 
     <LinearLayout
         android:id="@+id/headers"
@@ -57,17 +57,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <SearchView
-            android:theme="@style/AppSearchView"
             android:id="@+id/ingredientSearchView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:queryBackground="@android:color/transparent"
             android:background="@drawable/search_view"
+            android:contextClickable="false"
             android:iconifiedByDefault="false"
-            android:queryHint="Search ingredient here" />
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="Search ingredient here"
+            android:theme="@style/AppSearchView" />
 
     </LinearLayout>
 
@@ -91,6 +92,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
+            android:id="@+id/sortBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/baseline_sort_24"
@@ -103,7 +105,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="570dp"
         android:layout_below="@id/labels"
         android:scrollbars="vertical"
         tools:listitem="@layout/card_view_design" />
@@ -112,7 +114,7 @@
         android:id="@+id/noIngredientHasRecorded"
         android:gravity="center"
         android:visibility="invisible"
-        android:text="No ingrdient has recorded!"
+        android:text="@string/no_ingredient_has_recorded"
         android:layout_below="@id/headers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -121,7 +123,7 @@
         android:id="@+id/notFoundText"
         android:gravity="center"
         android:visibility="invisible"
-        android:text="Ingredient Not Found!"
+        android:text="@string/ingredient_not_found"
         android:layout_below="@id/headers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

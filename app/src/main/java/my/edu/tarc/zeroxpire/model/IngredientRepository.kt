@@ -31,13 +31,18 @@ class IngredientRepository(private val ingredientDao: IngredientDao){
         ingredientDao.updateIngredient(ingredient)
     }
 
-    @WorkerThread
-    suspend fun updateName(id: Int, newName: String) {
-        ingredientDao.updateName(id, newName)
-    }
+//    @WorkerThread
+//    suspend fun updateName(id: Int, newName: String) {
+//        ingredientDao.updateName(id, newName)
+//    }
+//
+//    @WorkerThread
+//    suspend fun getIngredientById(id: Int){
+//        ingredientDao.getIngredientById(id)
+//    }
 
-    @WorkerThread
-    suspend fun getIngredientById(id: Int){
-        ingredientDao.getIngredientById(id)
-    }
+//    @WorkerThread
+//    suspend fun sortByName(ingredient: Ingredient){
+//        ingredientDao.sortByName(ingredient)
+//    }
 }

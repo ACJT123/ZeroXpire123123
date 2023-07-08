@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.ingredient
 
 import android.content.Context
 import android.os.Bundle
@@ -175,11 +175,11 @@ class ScannerFragment : Fragment() {
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun scrape(barcode: String) {
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.Main) {
             try {
                 val url = "https://www.upczilla.com/item/$barcode/"
                 val doc = Jsoup.connect(url).get()
-                val productTitle = doc.select("/html/body/div[3]/main/article/div/div[2]/div/div/div[1]/div/h1").text()
+                val productTitle = doc.getElementById("#ajaxbox").toString()
                 withContext(Dispatchers.Main) {
                     Toast.makeText(requireContext(), productTitle, Toast.LENGTH_SHORT).show()
                 }

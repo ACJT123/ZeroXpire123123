@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.ingredient
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -99,9 +99,9 @@ class IngredientDetailFragment : Fragment() {
             }
 
             if (newName.isNotEmpty()) {
-                binding.apply {
-                    ingredientViewModel.updateIngredientName(ingredientId, newName)
-                }
+//                binding.apply {
+//                    ingredientViewModel.updateIngredientName(ingredientId, newName)
+//                }
 
                 toast("Ingredient is updated successfully!")
                 toast(newName)

@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

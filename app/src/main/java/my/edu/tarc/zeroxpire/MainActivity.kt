@@ -14,7 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import my.edu.tarc.zeroxpire.databinding.ActivityMainBinding
-import my.edu.tarc.zeroxpire.view.ScannerFragment
+import my.edu.tarc.zeroxpire.view.ingredient.ScannerFragment
 import my.edu.tarc.zeroxpire.viewmodel.IngredientViewModel
 
 class MainActivity : AppCompatActivity(){

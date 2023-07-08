@@ -1,14 +1,20 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.goal
 
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import my.edu.tarc.zeroxpire.R
 import my.edu.tarc.zeroxpire.databinding.FragmentCreateGoalBinding
+import my.edu.tarc.zeroxpire.model.Goal
+import my.edu.tarc.zeroxpire.model.Ingredient
+import my.edu.tarc.zeroxpire.viewmodel.GoalViewModel
+import my.edu.tarc.zeroxpire.viewmodel.IngredientViewModel
 import java.util.*
 
 
@@ -17,6 +23,15 @@ class CreateGoalFragment : Fragment() {
     private var selectedStartDate: String? = null
     private var selectedEndDate: String? = null
     private var selectedCompletionDate: String? = null
+
+    val goalViewModel : GoalViewModel by activityViewModels()
+
+    //data
+    private var name: String = ""
+    private var name: String = ""
+    private var date: String = ""
+    private var numOfIngredients: Int = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,14 +45,62 @@ class CreateGoalFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //nav stuff
-        binding.upBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_createGoalFragment_to_goalFragment)
-        }
-        binding.createBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_createGoalFragment_to_goalFragment)
-        }
+        navBack()
 
         //calendar stuff
+        calendarChooser()
+
+        //target stuff
+        chooseTargetNumOfIngredients()
+
+        //store goal
+        binding.createBtn.setOnClickListener {
+            storeGoal()
+        }
+    }
+
+    private fun storeGoal() {
+        val goalName = binding.enterGoalName.text.toString()
+        val goalCompletionDate = selectedCompletionDate
+        val targetNumOfIngredient = binding.qty.text.toString().toInt()
+
+        if (goalName.isNotEmpty() && goalCompletionDate != null) {
+            // Insert the ingredient into the database
+            binding.apply {
+                name = goalName
+                date = goalCompletionDate
+                numOfIngredients = targetNumOfIngredient
+                val newGoal = Goal(id, name, date, numOfIngredients, null, null, )
+                ingredientViewModel.addIngredient(newIngredient)
+            }
+            Toast.makeText(requireContext(), "Goal is added successfully!", Toast.LENGTH_SHORT).show()
+            findNavController().navigateUp()
+
+        } else {
+            if(ingredientName.isEmpty()){
+                binding.enterIngredientNameLayout.error = "Please enter the ingredient's name"
+                binding.enterIngredientName.requestFocus()
+            }
+            if(expiryDate.isNullOrEmpty()){
+                binding.chooseExpiryDateLayout.error = "Please select the expiry date"
+                binding.chooseExpiryDate.requestFocus()
+            }
+        }
+    }
+
+    private fun chooseTargetNumOfIngredients() {
+        var target: Int = binding.qty.text.toString().toInt()
+        binding.decBtn.setOnClickListener {
+            target -= 1
+            binding.qty.text = target.toString()
+        }
+        binding.incBtn.setOnClickListener {
+            target += 1
+            binding.qty.text = target.toString()
+        }
+    }
+
+    private fun calendarChooser() {
         binding.chooseExpiryStartDate.setOnClickListener{
             val calendar = Calendar.getInstance()
 
@@ -133,16 +196,14 @@ class CreateGoalFragment : Fragment() {
 
             datePickerDialog.show()
         }
+    }
 
-        //target stuff
-        var target: Int = binding.qty.text.toString().toInt()
-        binding.decBtn.setOnClickListener {
-            target -= 1
-            binding.qty.text = target.toString()
+    private fun navBack() {
+        binding.upBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
-        binding.incBtn.setOnClickListener {
-            target += 1
-            binding.qty.text = target.toString()
+        binding.createBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 }

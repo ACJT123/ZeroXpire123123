@@ -1,4 +1,4 @@
-package my.edu.tarc.zeroxpire.view
+package my.edu.tarc.zeroxpire.view.ingredient
 
 import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog

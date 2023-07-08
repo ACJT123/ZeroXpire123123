@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ingredientFragment"
-        android:name="my.edu.tarc.zeroxpire.view.IngredientFragment"
+        android:name="my.edu.tarc.zeroxpire.view.ingredient.IngredientFragment"
         android:label="Ingredient"
         tools:layout="@layout/fragment_ingredient" >
         <action
@@ -22,22 +22,22 @@
     </fragment>
     <fragment
         android:id="@+id/activeGoalFragment"
-        android:name="my.edu.tarc.zeroxpire.view.ActiveGoalFragment"
+        android:name="my.edu.tarc.zeroxpire.view.goal.ActiveGoalFragment"
         android:label="fragment_active_goal"
         tools:layout="@layout/fragment_active_goal" />
     <fragment
         android:id="@+id/completedGoalFragment"
-        android:name="my.edu.tarc.zeroxpire.view.CompletedGoalFragment"
+        android:name="my.edu.tarc.zeroxpire.view.goal.CompletedGoalFragment"
         android:label="fragment_completed_goal"
         tools:layout="@layout/fragment_completed_goal" />
     <fragment
         android:id="@+id/uncompletedGoalFragment"
-        android:name="my.edu.tarc.zeroxpire.view.UncompletedGoalFragment"
+        android:name="my.edu.tarc.zeroxpire.view.goal.UncompletedGoalFragment"
         android:label="fragment_uncompleted_goal"
         tools:layout="@layout/fragment_uncompleted_goal" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="my.edu.tarc.zeroxpire.view.ProfileFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_recipe" />
     <fragment
         android:id="@+id/termsAndConditionsFragment"
-        android:name="my.edu.tarc.zeroxpire.view.TermsAndConditionsFragment"
+        android:name="my.edu.tarc.zeroxpire.view.others.TermsAndConditionsFragment"
         android:label="fragment_terms_and_conditions"
         tools:layout="@layout/fragment_terms_and_conditions" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="my.edu.tarc.zeroxpire.view.NotificationsFragment"
+        android:name="my.edu.tarc.zeroxpire.view.others.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" >
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="my.edu.tarc.zeroxpire.view.EditProfileFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="my.edu.tarc.zeroxpire.view.LoginFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -104,12 +104,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="my.edu.tarc.zeroxpire.view.RegisterFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="my.edu.tarc.zeroxpire.view.ForgotPasswordFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/enterVeriCodeFragment"
-        android:name="my.edu.tarc.zeroxpire.view.EnterVeriCodeFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.EnterVeriCodeFragment"
         android:label="fragment_enter_veri_code"
         tools:layout="@layout/fragment_enter_veri_code" >
         <action
@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
-        android:name="my.edu.tarc.zeroxpire.view.ResetPasswordFragment"
+        android:name="my.edu.tarc.zeroxpire.view.profile.ResetPasswordFragment"
         android:label="fragment_reset_password"
         tools:layout="@layout/fragment_reset_password" >
         <action
@@ -142,7 +142,7 @@
     </fragment>
     <fragment
         android:id="@+id/scannerFragment"
-        android:name="my.edu.tarc.zeroxpire.view.ScannerFragment"
+        android:name="my.edu.tarc.zeroxpire.view.ingredient.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" >
         <action
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/addIngredientFragment"
-        android:name="my.edu.tarc.zeroxpire.view.AddIngredientFragment"
+        android:name="my.edu.tarc.zeroxpire.view.ingredient.AddIngredientFragment"
         android:label="fragment_add_ingredient"
         tools:layout="@layout/fragment_add_ingredient" >
         <action
@@ -170,7 +170,7 @@
     </fragment>
     <fragment
         android:id="@+id/goalFragment"
-        android:name="my.edu.tarc.zeroxpire.view.GoalFragment"
+        android:name="my.edu.tarc.zeroxpire.view.goal.GoalFragment"
         android:label="fragment_goal"
         tools:layout="@layout/fragment_goal" >
         <action
@@ -179,7 +179,7 @@
     </fragment>
     <fragment
         android:id="@+id/createGoalFragment"
-        android:name="my.edu.tarc.zeroxpire.view.CreateGoalFragment"
+        android:name="my.edu.tarc.zeroxpire.view.goal.CreateGoalFragment"
         android:label="fragment_create_goal"
         tools:layout="@layout/fragment_create_goal" >
         <action
@@ -188,7 +188,7 @@
     </fragment>
     <fragment
         android:id="@+id/ingredientDetailFragment"
-        android:name="my.edu.tarc.zeroxpire.view.IngredientDetailFragment"
+        android:name="my.edu.tarc.zeroxpire.view.ingredient.IngredientDetailFragment"
         android:label="fragment_ingredient_detail"
         tools:layout="@layout/fragment_ingredient_detail" />
 </navigation>
