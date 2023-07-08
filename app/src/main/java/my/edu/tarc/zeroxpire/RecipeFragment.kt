@@ -20,6 +20,9 @@ class RecipeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var parama: String? = null
+    private var parambb: String? = null
+    private var paramccc: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
