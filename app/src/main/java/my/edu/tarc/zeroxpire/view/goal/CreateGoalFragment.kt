@@ -27,8 +27,6 @@ class CreateGoalFragment : Fragment() {
     val goalViewModel : GoalViewModel by activityViewModels()
 
     //data
-    private var name: String = ""
-    private var name: String = ""
     private var date: String = ""
     private var numOfIngredients: Int = 0
 
@@ -60,32 +58,32 @@ class CreateGoalFragment : Fragment() {
     }
 
     private fun storeGoal() {
-        val goalName = binding.enterGoalName.text.toString()
-        val goalCompletionDate = selectedCompletionDate
-        val targetNumOfIngredient = binding.qty.text.toString().toInt()
-
-        if (goalName.isNotEmpty() && goalCompletionDate != null) {
-            // Insert the ingredient into the database
-            binding.apply {
-                name = goalName
-                date = goalCompletionDate
-                numOfIngredients = targetNumOfIngredient
-                val newGoal = Goal(id, name, date, numOfIngredients, null, null, )
-                ingredientViewModel.addIngredient(newIngredient)
-            }
-            Toast.makeText(requireContext(), "Goal is added successfully!", Toast.LENGTH_SHORT).show()
-            findNavController().navigateUp()
-
-        } else {
-            if(ingredientName.isEmpty()){
-                binding.enterIngredientNameLayout.error = "Please enter the ingredient's name"
-                binding.enterIngredientName.requestFocus()
-            }
-            if(expiryDate.isNullOrEmpty()){
-                binding.chooseExpiryDateLayout.error = "Please select the expiry date"
-                binding.chooseExpiryDate.requestFocus()
-            }
-        }
+//        val goalName = binding.enterGoalName.text.toString()
+//        val goalCompletionDate = selectedCompletionDate
+//        val targetNumOfIngredient = binding.qty.text.toString().toInt()
+//
+//        if (goalName.isNotEmpty() && goalCompletionDate != null) {
+//            // Insert the ingredient into the database
+//            binding.apply {
+//                name = goalName
+//                date = goalCompletionDate
+//                numOfIngredients = targetNumOfIngredient
+//                val newGoal = Goal(id, name, date, numOfIngredients, null, null, )
+//                ingredientViewModel.addIngredient(newIngredient)
+//            }
+//            Toast.makeText(requireContext(), "Goal is added successfully!", Toast.LENGTH_SHORT).show()
+//            findNavController().navigateUp()
+//
+//        } else {
+//            if(ingredientName.isEmpty()){
+//                binding.enterIngredientNameLayout.error = "Please enter the ingredient's name"
+//                binding.enterIngredientName.requestFocus()
+//            }
+//            if(expiryDate.isNullOrEmpty()){
+//                binding.chooseExpiryDateLayout.error = "Please select the expiry date"
+//                binding.chooseExpiryDate.requestFocus()
+//            }
+//        }
     }
 
     private fun chooseTargetNumOfIngredients() {
